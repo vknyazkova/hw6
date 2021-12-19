@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% block title %} Анкета {% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-1 col-md-1 col-lg-2 col-xl-2"></div><!--Empty column-->
+
+            <div class="col-sm-10 col-md-10 col-lg-8 col-xl-8"><!--Form-->
+                <h1 id= "title">Новогодний опрос</h1>
+                <form id="survey-form" action="" method="POST">
+
+                    <div class="form-group">
+                        <label for="name">{{ questions[0].question }}</label>
+                        <input class="form-control"
+                               placeholder="Введите имя"
+                               id="name"
+                               name="1"
+                               required pattern='[A-Za-zА-Яа-яЁё\s]+'>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="age">{{ questions[1].question }}</label>
+                        <input class="form-control"
+                               placeholder="Введите возраст"
+                               id="age"
+                               name="2"
+                               required pattern="\d+">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">{{ questions[2].question }}</label>
+                        <input class="form-control"
+                               placeholder="Введите город"
+                               id="city"
+                               name="3"
+                               required pattern="[\-A-Za-zА-Яа-яЁё\s]+">
+                    </div>
+
+                    <p>{{ questions[3].question }}</p>
+                    <div class="form-check">
+                        <label class="form-check-label" for="male">
+                            <input type="radio" class="form-check-input" id="male" name="4" value="male" required>мужчина
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="female">
+                            <input type="radio" class="form-check-input" id="female" name="4" value="female" required>женщина
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="other">
+                            <input type="radio" class="form-check-input" id="other" name="4" value="other" required>другое
+                        </label>
+                    </div>
+                    <br>
+                    <label for= "dropdown">{{ questions[4].question }}</label>
+                    <select class="custom-select" id="dropdown" name="5" required>
+                        <option disabled selected value="">Выберите диапазон</option>
+                        <option value="<200"><200</option>
+                        <option value="200-500">200-500</option>
+                        <option value="500-1000">500-1000</option>
+                        <option value="1000-2000">1000-2000</option>
+                        <option value="2000-5000">2000-5000</option>
+                        <option value="5000+">5000+</option>
+                    </select>
+
+                    <br>
+                    <p>{{ questions[5].question }}</p>
+                    <div class="form-check">
+                        <label class="form-check-label" for="wishlistyes">
+                            <input type="radio" class="form-check-input" id="wishlistyes" name="6" value="yes" required>да
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="wishlistno">
+                            <input type="radio" class="form-check-input" id="wishlistno" name="6" value="no" required>нет
+                        </label>
+                    </div>
+
+                    <br>
+                    <label for="inputWish">{{ questions[6].question }}</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">1</span>
+                        <input class="form-control" id="inputWish" name="7" placeholder="желание 1">
+                    </div>
+                    <div class="input-group">
+                         <span class="input-group-text" id="basic-addon2">2</span>
+                         <input class="form-control" id="inputWish" name="7" placeholder="желание 2">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon3">3</span>
+                        <input class="form-control" id="inputWish" name="7" placeholder="желание 3">
+                    </div>
+
+
+                    <br>
+                    <p>{{ questions[7].question }}</p>
+                        <div class="form-check">
+                            <label class="form-check-label" for="red">
+                                <input type="checkbox" class="form-check-input" id="red" name="8" value="red">красный
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="blue">
+                                <input type="checkbox" class="form-check-input" id="blue" name="8" value="blue">синий
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="green">
+                                <input type="checkbox" class="form-check-input" id="green" name="8" value="green">зеленый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="yellow">
+                                <input type="checkbox" class="form-check-input" id="yellow" name="8" value="yellow">желтый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="pink">
+                                <input type="checkbox" class="form-check-input" id="pink" name="8" value="pink">розовый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="purple">
+                                <input type="checkbox" class="form-check-input" id="purple" name="8" value="purple">фиолетовый
+                            </label>
+                        </div>
+
+                    <br>
+                    <p>{{ questions[8].question }}</p>
+                        <div class="form-check">
+                            <label class="form-check-label" for="candies">
+                                <input type="checkbox" class="form-check-input" id="candies" name="9" value="candies">конфеты
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="chocolate">
+                                <input type="checkbox" class="form-check-input" id="chocolate" name="9" value="chocolate">шоколад
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="lollipop">
+                                <input type="checkbox" class="form-check-input" id="lollipop" name="9" value="lollipop">леденцы
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="cookies">
+                                <input type="checkbox" class="form-check-input" id="cookies" name="9" value="cookies">печенье
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="hatesweets">
+                                <input type="checkbox" class="form-check-input" id="hatesweets" name="9" value="hatesweets">не люблю сладкое
+                            </label>
+                        </div>
+
+                    <br>
+                    <p>{{ questions[9].question }}</p>
+                        <div class="form-check">
+                            <label class="form-check-label" for="tea">
+                                <input type="checkbox" class="form-check-input" id="tea" name="10" value="tea">чай
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="coffee">
+                                <input type="checkbox" class="form-check-input" id="coffee" name="10" value="coffee">кофе
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="cocoa">
+                                <input type="checkbox" class="form-check-input" id="cocoa" name="10" value="cocoa">какао
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="gluhwein">
+                                <input type="checkbox" class="form-check-input" id="gluhwein" name="10" value="gluhwein">глинтвейн
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="otherdrink">
+                                <input type="checkbox" class="form-check-input" id="otherdrink" name="10" value="other">ничего из вышеперечисленного
+                            </label>
+                        </div>
+
+
+                    <br>
+                        <div class="form-group">
+                            <label for="comment">{{ questions[10].question }}</label>
+                            <textarea class="form-control" rows="5" id="comment" name="11" placeholder= "Например, зеленый чай и темный шоколад..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-warning" style="width: 100%;">Submit</button>
+                </form>
+            </div>
+
+            <div class="col-sm-1 col-md-1 col-lg-2 col-xl-2"></div><!--Empty column-->
+        </div>
+    </div>
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+{% endblock %}

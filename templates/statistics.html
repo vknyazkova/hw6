@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %} Статистика {% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-1 col-md-1 col-lg-2 col-xl-2"></div><!--Empty column-->
+
+             <div class="col-sm-10 col-md-10 col-lg-8 col-xl-8"><!--Results-->
+                 <p> Количество людей, прошедших опрос: <b> {{ results["resp_num"] }} </b></p>
+                 <p> Средний возраст участников опроса: <b> {{ results["av_age"] }} </b></p>
+                 <p> Среди них у <b>{{ results['wishlistExists']}} </b>% есть вишлист </p>
+             <br>
+                 <label class="h6" for="present_cost"> Какую сумму респонденты считают нормальной для новогоднего подарка: </label>
+                 <table class="table" id="present_cost">
+                    <thead>
+                        <th scope="col">сумма, руб.</th>
+                        <th scope="col">процент, %</th>
+                    </thead>
+                     {% for k in results['present_cost'] %}
+                        <tr>
+                            <td> {{ k }} </td>
+                            <td> {{ results['present_cost'][k] }} </td>
+                        </tr>
+                     {% endfor %}
+                 </table>
+
+                 <br>
+                <div class="row">
+                    <h6>Цвета, сладости и напитки по убыванию популярности: </h6>
+                    <div class="col">
+                        {% for k in results['colors'] %}
+                            <p>{{ k }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="col">
+                        {% for k in results['sweets'] %}
+                            <p>{{ k }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="col">
+                        {% for k in results['drinks'] %}
+                            <p>{{ k }}</p>
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+             </div>
+            <div class="col-sm-1 col-md-1 col-lg-2 col-xl-2"></div><!--Empty column-->
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+{% endblock %}
